@@ -4,7 +4,7 @@ import React from "react";
 function NewPage() {
   return (
     <>
-      <h1
+      <div
         className="text-center text-4xl font-bold my-8"
         style={{
           width: "100%",
@@ -16,9 +16,9 @@ function NewPage() {
         }}
       >
         Blogs
-      </h1>
+      </div>
 
-      <div className="flex justify-center mx-31">
+      <div className="flex justify-center mx-31 mb-8">
         <div
           className="w-816px"
           style={{ width: "816px", marginRight: "31px" }}
@@ -26,8 +26,8 @@ function NewPage() {
           <div className="flex flex-col">
             <Image
               src={"/images/blog.png"}
-              width={200}
-              height={200}
+              width={700}
+              height={700}
               style={{ borderRadius: "10px", width: "816px", height: "632px" }}
             />
             <div className="flex mt-10">
@@ -150,7 +150,7 @@ function NewPage() {
                 electronic
               </div>
             </div>
-            <div
+            {/* <div
               className="flex justify-between mt-12"
               style={{ width: "816px" }}
             >
@@ -460,10 +460,10 @@ function NewPage() {
                   Send Message
                 </button>
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
-        <div className="w-392px" style={{ width: "392px" }}>
+        {/* <div className="w-392px" style={{ width: "392px" }}>
           <div className="flex flex-col">
             <div
               className="w-392 h-116 bg-white shadow-lg rounded-lg"
@@ -673,7 +673,7 @@ function NewPage() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
