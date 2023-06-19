@@ -1,9 +1,12 @@
+import Header from "@/components/Header";
 import Designs from "@/components/PortFolio/Designs";
 import PortFolios from "@/components/PortFolio/PortFolios";
 import React from "react";
 
 function PortFolio() {
   return (
+    <>
+    <Header heading="Portfolio" subHeading="Home > Portfolio"/>
     <div className="bg-F5F5F5 py-4 mt-10">
       <div className="flex flex-col items-center">
         <div className="text-center font-semibold">OurWork</div>
@@ -146,6 +149,7 @@ function PortFolio() {
         </div>
       </div>
     </div>
+    </>
   );
 }
 

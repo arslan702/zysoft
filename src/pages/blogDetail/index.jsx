@@ -1,9 +1,11 @@
+import Header from "@/components/Header";
 import Image from "next/image";
 import React from "react";
 
 function NewPage() {
   return (
     <>
+    <Header heading="Blogs" subHeading="Home > Details"/>
       <div
         className="text-center text-4xl font-bold my-8"
         style={{

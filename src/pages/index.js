@@ -1,5 +1,5 @@
+import HomeHeader from '@/components/HomeHeader'
 import { Inter } from 'next/font/google'
-import Boxes from '@/components/Blogs'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -11,7 +11,7 @@ export default function Home() {
     >
       Home Page
     </main> */}
-    <Boxes/>
+    <HomeHeader/>
     </>
   )
 }

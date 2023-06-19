@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import Link from 'next/link';
 import React, { useState } from 'react';
 
 function Navbar() {
@@ -10,7 +11,7 @@ function Navbar() {
 
   return (
     <div>
-      <nav className="bg-f6f6f6 py-1">
+      <nav className="bg-f6f6ff py-1" style={{backgroundColor: '#F6F6FF'}}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             <div className="flex-shrink-0">
@@ -21,12 +22,12 @@ function Navbar() {
             </div>
             <div className="hidden md:flex">
               <div className="ml-4 flex items-center">
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Home</a>
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">About</a>
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Services</a>
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Jobs</a>
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Portfolio</a>
-                <a href="#" className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Blog</a>
+                <Link href={"/"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Home</span></Link>
+                <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">About</span></Link>
+                <Link href={"/services"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Services</span></Link>
+                <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Jobs</span></Link>
+                <Link href={"/portfolio"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Portfolio</span></Link>
+                <Link href={"/blogs"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Blog</span></Link>
               </div>
               <div className="ml-4">
                 <a href="#" className="text-white bg-indigo-400 hover:bg-indigo-400 px-4 py-2 rounded-md text-sm font-medium" style={{background: 'linear-gradient(274.71deg, #3C1B65 -32.2%, #9F37F0 109.29%)', boxShadow: '0px 4px 25px rgba(151, 50, 212, 0.35)', borderRadius: '25px'}}>Contact Us</a>
