@@ -23,9 +23,9 @@ function Navbar() {
             <div className="hidden md:flex">
               <div className="ml-4 flex items-center">
                 <Link href={"/"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Home</span></Link>
-                <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">About</span></Link>
+                {/* <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">About</span></Link> */}
                 <Link href={"/services"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Services</span></Link>
-                <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Jobs</span></Link>
+                {/* <Link href={"#"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Jobs</span></Link> */}
                 <Link href={"/portfolio"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Portfolio</span></Link>
                 <Link href={"/blogs"}><span className="text-gray-800 hover:text-black px-6 py-2 rounded-md text-sm font-medium">Blog</span></Link>
               </div>
@@ -45,9 +45,9 @@ function Navbar() {
         <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
             <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">About</a>
+            {/* <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">About</a> */}
             <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Services</a>
-            <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Jobs</a>
+            {/* <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Jobs</a> */}
             <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Portfolio</a>
             <a href="#" className="text-gray-800 hover:text-black block px-3 py-2 rounded-md text-base font-medium">Blog</a>
           </div>
