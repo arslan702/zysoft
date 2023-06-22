@@ -8,13 +8,11 @@ import {
 } from "@material-tailwind/react";
 import { serviceData } from "@/components/data/serviceData";
 
-function Icon({ id, open }) {
+function Icon({ id }) {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      className={`${
-        id === open ? "rotate-90" : ""
-      } h-5 w-5 transition-transform`}
+      className={`h-5 w-5 transition-transform`}
       viewBox="0 0 24 24"
       fill="none"
       stroke="currentColor"
@@ -147,7 +145,7 @@ function Services() {
                     {acc?.heading}
                   </div>
                   <div className="mt-5 mr-4">
-                  <Icon id={acc?.id} open={open} />
+                  <Icon id={acc?.id} />
                   </div>
                 </div>
               ))}
