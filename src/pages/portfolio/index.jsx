@@ -1,9 +1,27 @@
 import Header from "@/components/Header";
 import Designs from "@/components/PortFolio/Designs";
 import PortFolios from "@/components/PortFolio/PortFolios";
+import projectApi from "@/lib/project";
+import { useQuery } from "@tanstack/react-query";
 import React from "react";
 
-function PortFolio() {
+function PortFolio({projects}) {
+  const { data, isLoading, isError } = useQuery(
+    ["projects"],
+    async () => {
+      const data = await projectApi.getProjects();
+      return data;
+    },
+    {
+      initialData: projects,
+    }
+  );
+
+  console.log({data})
+
+  if(isLoading) {
+    return 'Loading...'
+  }
   return (
     <>
     <Header heading="Portfolio" subHeading="Home > Portfolio"/>
@@ -78,15 +96,17 @@ function PortFolio() {
         </div>
       </div>
       <div className="flex flex-wrap justify-center mt-12">
-        <PortFolios image="/images/portOne.png" />
-        <Designs image="/images/portTwo.png" heading="Web Development" />
+        {data?.map((item) => (
+        <PortFolios image={item?.images[0]?.url} />
+        ))}
+        {/* <Designs image="/images/portTwo.png" heading="Web Development" />
         <PortFolios image="/images/portThree.png" />
         <PortFolios image="/images/portFour.png" />
         <Designs image="/images/portFive.png" heading="App Development" />
         <PortFolios image="/images/portSix.png" />
         <PortFolios image="/images/portSeven.png" />
         <Designs image="/images/portEight.png" heading="Dashboard Design" />
-        <PortFolios image="/images/portNine.png" />
+        <PortFolios image="/images/portNine.png" /> */}
         <div className="w-full flex justify-center items-center mt-4">
           <nav className="pagination">
             <ul className="flex items-center justify-center">

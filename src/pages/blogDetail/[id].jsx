@@ -1,11 +1,31 @@
 import Header from "@/components/Header";
+import blogApi from "@/lib/blogApi";
+import { useQuery } from "@tanstack/react-query";
 import Image from "next/image";
+import { useRouter } from "next/router";
+import parse from 'html-react-parser'
 import React from "react";
 
 function NewPage() {
+  const router = useRouter()
+  const { id } = router.query;
+  console.log({id})
+
+  const { data, isLoading, isError, error } = useQuery(
+    ["blogs", id],
+    async () => {
+      const response = await blogApi.getBlog(id);
+      return response;
+    },
+    { enabled: !!id }
+  );
+
+  if (isLoading) {
+    return <div>Loading...</div>;
+  }
   return (
     <>
-    <Header heading="Blogs" subHeading="Home > Details"/>
+    <Header heading="Blogs" subHeading="Home > Blog Details"/>
       <div
         className="text-center text-4xl font-bold my-8"
         style={{
@@ -27,7 +47,8 @@ function NewPage() {
         >
           <div className="flex flex-col">
             <Image
-              src={"/images/blog.png"}
+              src={data?.images[0]?.url}
+              alt="img"
               width={700}
               height={700}
               style={{ borderRadius: "10px", width: "816px", height: "632px" }}
@@ -67,7 +88,7 @@ function NewPage() {
                   color: "#000000",
                 }}
               >
-                Website – The quickest way to take your business online
+                {data?.name}
               </div>
               <div
                 className="mt-5"
@@ -78,19 +99,10 @@ function NewPage() {
                   lineHeight: "157.4%",
                 }}
               >
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry’s standard dummy
-                text ever since the 1500s, when an unknown printer took a galley
-                of type and scrambled it to make a type specimen book. It has
-                survived not only five centuries, but also the leap into
-                electronic typesetting, remaining essentially unchanged. It was
-                popularised in the 1960s with the release of Letraset sheets
-                containing Lorem Ipsum passages, and more recently with desktop
-                publishing software like Aldus PageMaker including versions of
-                Lorem Ipsum.
+                {parse(data?.description)}
               </div>
             </div>
-            <div className="flex flex-col mt-10">
+            {/* <div className="flex flex-col mt-10">
               <div
                 style={{
                   fontStyle: "normal",
@@ -151,7 +163,7 @@ function NewPage() {
                 survived not only five centuries, but also the leap into
                 electronic
               </div>
-            </div>
+            </div> */}
             {/* <div
               className="flex justify-between mt-12"
               style={{ width: "816px" }}
