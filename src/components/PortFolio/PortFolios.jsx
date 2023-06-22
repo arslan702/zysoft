@@ -1,33 +1,11 @@
 import Image from "next/image";
 import React from "react";
 
-const data = [
-  {
-    image: "/images/portOne.png",
-  },
-  {
-    image: "/images/portThree.png",
-  },
-  {
-    image: "/images/portFour.png",
-  },
-  {
-    image: "/images/portSix.png",
-  },
-  {
-    image: "/images/portSeven.png",
-  },
-  {
-    image: "/images/portNine.png",
-  },
-];
-
 function PortFolios({ image }) {
   return (
     <>
       <div
-        style={{ width: "392px", height: "400px", cursor: "pointer" }}
-        className="w-64 h-80 mx-4 my-4 bg-white shadow-md rounded-md"
+        className="w-[360px] h-[300px] sm:h-[400px] mx-4 my-4 bg-white shadow-md rounded-md cursor-pointer"
       >
         <div className="h-2/5">
           <Image
@@ -36,7 +14,7 @@ function PortFolios({ image }) {
             alt="Image"
             width={500}
             height={500}
-            className="object-cover w-full h-full rounded-t-md"
+            className="object-cover w-full h-[300px] sm:h-[400px] rounded-md"
           />
         </div>
       </div>

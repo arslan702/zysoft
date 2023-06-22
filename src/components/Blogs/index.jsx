@@ -4,55 +4,8 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import parse from 'html-react-parser';
 import React from "react";
-
-// const data = [
-//   {
-//     image: "/images/blogone.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogtwo.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogthree.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogfour.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogfive.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogsix.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogseven.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blogeight.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-//   {
-//     image: "/images/blognine.png",
-//     title: "Lorem ipsum dolor sit amet, consectetur",
-//     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod.",
-//   },
-// ];
-
+import forward from '../../../public/images/right.png'
+import backward from '../../../public/images/left.png'
 
 function Boxes({blogs}) {
   const router = useRouter()
@@ -98,40 +51,38 @@ function Boxes({blogs}) {
     router.push(`/blogDetail/${id}`)
   }
   return (
-    <div className="bg-F5F5F5 py-4 mt-4">
-    <h1 className="text-center text-2xl font-bold mb-4" style={{fontSize: '2.5rem'}}>Blogs</h1>
+    <div className="bg-F5F5F5 py-4 mt-4  px-6 md:px-16">
+    <h1 className="text-center text-2xl md:text-4xl font-bold mb-6 md:mb-10 mt-8 md:mt-16">Blogs</h1>
       <div className="flex flex-wrap justify-center">
         {data?.map((item, index) => (
           <div
             key={index}
-            style={{ width: "392px", height: "508px", cursor: 'pointer' }}
-            className="w-64 h-80 mx-4 my-4 bg-white shadow-md rounded-md"
+            className="w-[370px] h-[400px] md:h-[480px] mx-4 my-4 bg-white shadow-md rounded-md cursor-pointer"
             onClick={(e) => handleClick(e, item?.id)}
           >
             <div className="h-2/5">
               <Image
                 src={item?.images[0]?.url}
-                style={{ height: "232px" }}
                 alt="Image"
                 width={200}
                 height={200}
-                className="object-cover w-full h-full rounded-t-md"
+                className="object-cover w-full h-[190px] md:h-[230px] rounded-t-md"
               />
             </div>
-            <div className="p-4 pt-12">
+            <div className="p-6  pt-10 md:pt-14">
               <div className="flex items-center justify-between">
-                <button className="w-48 md:w-173 h-10 md:h-36.29 bg-purple-700 rounded-md text-white">
+                <button className="py-2 px-8 bg-purple-700 rounded-md text-xs text-white">
                   Web Development
                 </button>
-                <div className="text-gray-700">{formatDate(item?.createdAt)}</div>
+                <div className="text-gray-700 text-sm">{formatDate(item?.createdAt)}</div>
               </div>
-              <h2 className="text-black text-lg md:text-xl font-medium mt-2">
-                {item?.name}
+              <h2 className="text-black text-base md:text-lg font-medium mt-4">
+                {item?.title}
               </h2>
-              <p className="text-black text-sm md:text-base mt-2">
+              <p className="text-black text-xs md:text-sm mt-2">
                 {parse(item?.description)}
               </p>
-              <div className="flex items-center justify-between mt-4">
+              <div className="flex items-center justify-between mt-4 md:mt-8">
                 <div className="flex items-center">
                   <div className="w-4 h-4">
                     <Image
@@ -158,9 +109,22 @@ function Boxes({blogs}) {
             </div>
           </div>
         ))}
-        <div className="w-full flex justify-center mt-4">
+        <div className="w-full flex justify-center my-16">
           <nav className="pagination">
             <ul className="flex items-center">
+            <li className="mr-2">
+                <button
+                  className="px-3 py-1 rounded-lg"
+                  style={{
+                    width: "40px",
+                    height: "40px",
+                    backgroundColor: "rgba(251, 29, 135, 0.2)",
+                    borderRadius: "5px",
+                  }}
+                >
+                  <Image src={backward} alt=""/>
+                </button>
+              </li>
               <li className="mr-2">
                 <button
                   className="px-3 py-1 rounded-lg bg-gray-200"
@@ -200,6 +164,7 @@ function Boxes({blogs}) {
                   3
                 </button>
               </li>
+              
               <li className="mr-2">
                 <button
                   className="px-3 py-1 rounded-lg"
@@ -210,7 +175,7 @@ function Boxes({blogs}) {
                     borderRadius: "5px",
                   }}
                 >
-                  4
+                  <Image src={forward} alt=""/>
                 </button>
               </li>
             </ul>
