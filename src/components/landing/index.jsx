@@ -7,7 +7,7 @@ import Team from "./team";
 import Customer from "./customerPage";
 import Technologies from "./technologies";
 import blueplus from "../../../public/images/blue-plus.png";
-import BlogCard from "../Blogs/blogcards";
+import BlogCard from "../Blogs/blogCards";
 
 import React from "react";
 
