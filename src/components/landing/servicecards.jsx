@@ -48,7 +48,7 @@ return(
         <div class="absolute text-xl text-black  font-semibold top-5 left-12  py-5 px-4" > <div className='w-20 h-20 rounded-full bg-[#FB1D87] mx-12 my-2 '> 
         <img src="https://www.linkpicture.com/q/Group-471.png" alt="" />
         </div> Graphic Designing
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'>We offer Graphic design services of creative solutions to individuals, businesses, and organizations.</div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>
@@ -61,7 +61,7 @@ return(
         <img src="https://www.linkpicture.com/q/Group-478.png" alt="" />
         </div> 
         <div className='px-6'>UI UX Design</div> 
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'>We offer UI/UX services to transform your digital product into a visually stunning and user-friendly experience. </div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>
@@ -73,7 +73,7 @@ return(
         <div class="absolute text-xl text-black  font-semibold top-5 left-12  px-5 py-5" > <div className='w-20 h-20 rounded-full bg-[#FB1D87] mx-12 my-2 '> 
         <img src="https://www.linkpicture.com/q/Group-472.png" alt="" />
         </div> Game Development
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'>Our game development service specializes in creating immersive and captivating gaming experiences.</div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>
@@ -84,7 +84,7 @@ return(
         <div class="absolute text-xl text-black  font-semibold top-5 left-12  px-5 py-5" > <div className='w-20 h-20 rounded-full bg-[#9F37F0] mx-12 my-2 '>
          <img src="https://www.linkpicture.com/q/Group-473.png" alt="" /> 
          </div> <h1 className='px-6'>Video Editing</h1>
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'>Our video editing service offers professional, high-quality solutions tailored to meet your specific needs.</div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>
@@ -96,7 +96,7 @@ return(
         <div class="absolute text-xl text-black  font-semibold top-5 left-12 px-5 py-5" > <div className='w-20 h-20 rounded-full bg-[#FB1D87] mx-12 my-2 '>
         <img src="https://www.linkpicture.com/q/Group-475.png" alt="" />
         </div>  <h1 className='px-16'>SEO</h1> 
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'> We offer SEO services to improve website visibility and organic search rankings.</div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>
@@ -108,7 +108,7 @@ return(
         <div class="absolute text-xl text-black  font-semibold top-5 left-12  px-5 py-5" > <div className='w-20 h-20 rounded-full bg-[#9F37F0]  mx-12 my-2 '>
          <img src="https://www.linkpicture.com/q/Group-476.png" alt="" /> 
          </div> Digital Marketing
-        <div className='text-sm pr-10 py-1 text-gray-800'> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</div>
+        <div className='text-sm pr-10 py-1 text-gray-800'>Digital marketing promotes businesses, products, or services through online channels.</div>
         <span className=' px-10 text-sm hover:text-[#FB1D87]'>Learn More ...</span>
         </div>
     </div>

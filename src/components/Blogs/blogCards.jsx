@@ -1,27 +1,13 @@
 
 import Image from "next/image";
 import { useRouter } from "next/router";
-import blogApi from "@/lib/blogApi";
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import parse from 'html-react-parser';
 
-function BlogCard() {
-    const router = useRouter()
-  const { data, isLoading, isError } = useQuery(
-    ["blogs"],
-    async () => {
-      const data = await blogApi.getBlogs();
-      return data;
-    },
-    // {
-    //   initialData: blogs,
-    // }
-  );
+function BlogCard({data}) {
+  const router = useRouter()
 
-  console.log({data})
-
-  function formatDate(timestamp) {
+   function formatDate(timestamp) {
     const dateArray = timestamp.split(" ");
     const day = dateArray[2];
     const month = dateArray[1];
@@ -44,19 +30,13 @@ function BlogCard() {
       return ""; // Return empty string if no valid parsed content is found
     }
   }
-    console.log({data})
   const handleClick = (e, id) => {
     e.preventDefault();
     router.push(`/blogDetail/${id}`)
   }
-
-  if(isLoading) {
-    return 'Loading...'
-  }
-
     return ( 
     <div className="flex flex-wrap justify-center">
-    {data.map((item, index) => (
+    {data && data?.map((item, index) => (
       <div
         key={index}
         className="w-[370px] h-[400px] md:h-[480px] mx-4 my-4 bg-white shadow-md rounded-md cursor-pointer"

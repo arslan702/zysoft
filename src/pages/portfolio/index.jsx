@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Designs from "@/components/PortFolio/Designs";
 import PortFolios from "@/components/PortFolio/PortFolios";
 import projectApi from "@/lib/project";
 import { useQuery } from "@tanstack/react-query";
@@ -11,27 +10,53 @@ import { useState } from "react";
 
 function PortFolio({projects}) {
   const [activeTab, setActiveTab] = useState("all");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 10; // Number of projects to fetch per page
 
   const handleTabClick = (tab) => {
     setActiveTab(tab);
+    setCurrentPage(1); // Reset to the first page when changing tabs
   };
 
   const { data, isLoading, isError } = useQuery(
-    ["projects"],
+    ["projects", currentPage],
     async () => {
-      const data = await projectApi.getProjects();
+      const data = await projectApi.getProjects(projectsPerPage, currentPage);
       return data;
     },
-    {
-      initialData: projects,
-    }
+    // {
+    //   initialData: projects,
+    // }
   );
 
-  console.log({data})
+  let filteredData = data;
 
-  if(isLoading) {
-    return 'Loading...'
+  if (activeTab !== "all") {
+    filteredData = data && data?.filter((item) => item?.category === activeTab);
   }
+
+  const totalPages = Math.ceil(filteredData && filteredData?.length / projectsPerPage);
+
+  if (isLoading) {
+    return "Loading...";
+  }
+
+  const handlePreviousPage = () => {
+    setCurrentPage((prevPage) => prevPage - 1);
+  };
+
+  const handleNextPage = () => {
+    setCurrentPage((prevPage) => prevPage + 1);
+  };
+
+  const handlePageClick = (page) => {
+    setCurrentPage(page);
+  };
+
+  // Calculate the indices of the projects to display for the current page
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const visibleProjects = filteredData && filteredData?.slice(startIndex, endIndex);
   return (
     <>
     <Header heading="Portfolio" subHeading="Home > Portfolio"/>
@@ -40,7 +65,7 @@ function PortFolio({projects}) {
         <div className="text-center text-base lg:text-xl font-semibold">OurWork</div>
         <div>
           <div
-            className="text-center text-xl sm:text-2xl lg:text-4xl font-bold mb-4"
+            className="text-center text-xl sm:text-2xl lg:text-4xl font-bold mb-4 lg:mr-5"
           >
             PortFolio
           </div>
@@ -74,14 +99,14 @@ function PortFolio({projects}) {
       </div>
       <div
         className={`flex items-center justify-center cursor-pointer ${
-          activeTab === "mobileApp" ? "bg-[#FB1D87] text-white" : "bg-[#FED2E7] text-black"
+          activeTab === "mobile" ? "bg-[#FB1D87] text-white" : "bg-[#FED2E7] text-black"
         }`}
         style={{
           width: "140px",
           height: "65px",
           borderRadius: "33px 33px 33px 10px",
         }}
-        onClick={() => handleTabClick("mobileApp")}
+        onClick={() => handleTabClick("mobile")}
       >
         Mobile App
       </div>
@@ -112,15 +137,13 @@ function PortFolio({projects}) {
         UI UX
       </div>
     </div>
-      <div className="flex flex-wrap justify-center mt-12 px-6 lg:px-16">
-        {data?.map((item) => (
-        <PortFolios image={item?.images[0]?.url} />
+    <div className="flex flex-wrap justify-center mt-12 px-6 lg:px-16">
+        {visibleProjects && visibleProjects?.map((item) => (
+          <PortFolios image={item?.images[0]?.url} />
         ))}
         <div className="w-full flex justify-center items-center my-16">
           <nav className="pagination">
             <ul className="flex items-center justify-center">
-              {" "}
-              {/* Updated line */}
               <li className="mr-2">
                 <button
                   className="px-3 py-1 rounded-lg"
@@ -130,36 +153,30 @@ function PortFolio({projects}) {
                     backgroundColor: "rgba(251, 29, 135, 0.2)",
                     borderRadius: "5px",
                   }}
+                  onClick={handlePreviousPage}
+                  disabled={currentPage === 1}
                 >
-                  <Image src={backward} alt=""/>
+                  <Image src={backward} alt="" />
                 </button>
               </li>
-              <li className="mr-2">
-                <button
-                  className="px-3 py-1 rounded-lg bg-gray-200"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundColor: "rgba(251, 29, 135, 0.2)",
-                    borderRadius: "5px",
-                  }}
-                >
-                  1
-                </button>
-              </li>
-              <li className="mr-2">
-                <button
-                  className="px-3 py-1 rounded-lg"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundColor: "rgba(251, 29, 135, 0.2)",
-                    borderRadius: "5px",
-                  }}
-                >
-                  2
-                </button>
-              </li>
+              {Array.from({ length: totalPages }).map((_, index) => (
+                <li className="mr-2" key={index}>
+                  <button
+                    className={`px-3 py-1 rounded-lg ${
+                      currentPage === index + 1 ? "bg-gray-200" : ""
+                    }`}
+                    style={{
+                      width: "40px",
+                      height: "40px",
+                      backgroundColor: "rgba(251, 29, 135, 0.2)",
+                      borderRadius: "5px",
+                    }}
+                    onClick={() => handlePageClick(index + 1)}
+                  >
+                    {index + 1}
+                  </button>
+                </li>
+              ))}
               <li className="mr-2">
                 <button
                   className="px-3 py-1 rounded-lg"
@@ -169,21 +186,10 @@ function PortFolio({projects}) {
                     backgroundColor: "rgba(251, 29, 135, 0.2)",
                     borderRadius: "5px",
                   }}
+                  onClick={handleNextPage}
+                  disabled={currentPage === totalPages}
                 >
-                  3
-                </button>
-              </li>
-              <li className="mr-2">
-                <button
-                  className="px-3 py-1 rounded-lg"
-                  style={{
-                    width: "40px",
-                    height: "40px",
-                    backgroundColor: "rgba(251, 29, 135, 0.2)",
-                    borderRadius: "5px",
-                  }}
-                >
-                  <Image src={forward} alt=""/>
+                  <Image src={forward} alt="" />
                 </button>
               </li>
             </ul>

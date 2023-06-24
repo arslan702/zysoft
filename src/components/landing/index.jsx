@@ -10,8 +10,23 @@ import blueplus from "../../../public/images/blue-plus.png";
 import BlogCard from "../Blogs/blogCards";
 
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import blogApi from "@/lib/blogApi";
 
 function HomeHeader() {
+  const { data, isLoading, isError } = useQuery(
+    ["blogs"],
+    async () => {
+      const data = await blogApi.getBlogs();
+      return data;
+    },
+    // {
+    //   initialData: blogs,
+    // }
+  );
+
+  const firstThreeItems = data && data?.slice(0, 3);
+
   return (
     <>
       <div className="bg-[url('https://www.linkpicture.com/q/headerOne.png')] bg-[#F7F7FF] grid grid-cols-2 h-[550px]">
@@ -207,7 +222,7 @@ function HomeHeader() {
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt.sit amet, consectetu dolor sit ame
         </span>
-        <BlogCard />
+        <BlogCard data={firstThreeItems}/>
       </div>
 
       <div className=" bg-[#3C1B65] px-56 flex object-center bg-[url('https://www.linkpicture.com/q/Ellipse-59.png')] bg-no-repeat bg-right-top ">
@@ -232,7 +247,7 @@ function HomeHeader() {
           <img src="https://www.linkpicture.com/q/newlog-2.png" alt="" />
         </div>
       </div>
-      <ItemContainer />
+      {/* <ItemContainer /> */}
     </>
   );
 }

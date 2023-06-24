@@ -27,12 +27,12 @@ function NewPage() {
     <>
     <Header heading="Blogs" subHeading="Home > Blog Details"/>
       <div
-        className="text-center text-4xl font-bold my-8"
+        className="text-center text-4xl font-bold my-8 lg:pr-10"
         style={{
           width: "100%",
           fontStyle: "normal",
           fontWeight: 700,
-          fontSize: "40px",
+          fontSize: "35px",
           lineHeight: "73.9%",
           color: "#000000",
         }}

@@ -2,6 +2,7 @@ import Header from "@/components/Header";
 import contactApi from "@/lib/contact";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
+import classNames from "classnames";
 
 function App() {
   const queryClient = useQueryClient();
@@ -14,6 +15,19 @@ function App() {
   const [email, setEmail] = useState("");
   const [country, setCountry] = useState("");
   const [mobileNo, setMobileNo] = useState("");
+  const [showPop, setShowPop] = useState(false);
+
+  const showMessagePop = () => {
+    setShowPop(true);
+    setTimeout(() => {
+      setShowPop(false);
+    }, 5000);
+  }
+
+  const popUpClasses = classNames("fixed", "bottom-0", "right-0", "m-8", "p-4", "bg-purple-500", "text-white", "rounded-md", {
+    "opacity-100": showPop,
+    "opacity-0": !showPop,
+  });
 
   const handleContinue1 = () => {
     setShowDropdown(false);
@@ -51,6 +65,17 @@ function App() {
     {
       onError: (data) => {},
       onSuccess: () => {
+        // showMessagePop()
+        setShowPop(true)
+        setService("")
+        setType("")
+        setName("")
+        setCountry("")
+        setEmail("")
+        setMobileNo("")
+        setTimeout(() => {
+          setShowPop(false);
+        }, 5000);      
         // notification.open({
         //   type: "success",
         //   message: "Blog saved successfully",
@@ -72,6 +97,11 @@ function App() {
   return (
     <>
       <Header heading="Contact Us" subHeading="Home > Contact Us" />
+      {showPop ? 
+      <div className={popUpClasses}>
+        <p>Your message has been submitted! We will contact you soon.</p>
+      </div>
+      : ''}
       <div className="flex justify-center h-screen">
         <div className="w-full max-w-sm p-4 mt-12 rounded">
           {showDropdown && (
